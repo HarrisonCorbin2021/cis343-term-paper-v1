@@ -33,9 +33,9 @@ class Connect4():
 
     def horizontalWin(board,player):
         count = 0
-        # check for vertical wins
-        for i in range(Connect4.num_Cols - 1):
-            for j in range(Connect4.num_Rows - 1):
+        # check for Horizontal wins
+        for i in range (0, Connect4.num_Cols - 1, 1):
+            for j in range(0, Connect4.num_Rows + 1, 1):
                     while board[i][j + count] == player:
                         count += 1
                         #print(count)
@@ -93,7 +93,7 @@ class Connect4():
             inp = ord(inp[0]) - ord("a")
         #if top row is empty
         if board[0][inp] == 'x':
-            for i in range(Connect4.num_Cols - 1, 0, -1):
+            for i in range(Connect4.num_Cols - 2, 0, -1):
                 if board[i][inp] == 'x':
                     board[i][inp] = player
                     break
