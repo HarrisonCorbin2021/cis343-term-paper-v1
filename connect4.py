@@ -84,16 +84,16 @@ class Connect4():
         inp = ord(inp[0]) - ord("a")
         #Check for a valid input
         print(inp)
-        while inp > 7 and inp < 0:
-            print("I worked")
+        while inp > 7 or inp < 0:
             if inp == 16:
                 print("Goodbye.")
                 quit()
             print("Not a valid entry.")
-            inp = int(input())
+            inp = input()
+            inp = ord(inp[0]) - ord("a")
         #if top row is empty
         if board[0][inp] == 'x':
-            for i in range(Connect4.num_Cols - 2, 0, -1):
+            for i in range(Connect4.num_Cols - 1, 0, -1):
                 if board[i][inp] == 'x':
                     board[i][inp] = player
                     break
@@ -101,7 +101,7 @@ class Connect4():
             print("That column is full. Please choose another")
         if Connect4.winCheck(board, player):
             print ("Congratulations, Player #{player}. You Win.")
-            exit
+            quit()
         if player == 1:
             Connect4.PlayerTurn(board, 2)
         else:
