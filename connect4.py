@@ -49,8 +49,10 @@ class Connect4():
                         print(i)
                         #print("A")
                         if count >= 4:
-                            print("I worked")
+                            #print("I worked")
                             return True
+                    else:
+                        count = 0
 
     def diagonalRWint(board,player):
         count = 0
@@ -59,10 +61,13 @@ class Connect4():
             for j in range(0, Connect4.num_Cols - 1, 1):
                     while board[i + count][j + count] == player:
                         count += 1
-                        if i + count >= Connect4.num_Cols - 1 or j + count <= Connect4.num_Rows:
+                        print(count)
+                        if count >= 4:
+                            return True
+                        if i + count >= Connect4.num_Cols - 1:
                             break
-                    if count >= 4:
-                        return True
+                        if j + count >= Connect4.num_Rows:
+                            break
                     
 
     def diagonalLWin(board,player):     
@@ -79,8 +84,8 @@ class Connect4():
                     
     def winCheck(board, player):
         #print ("F")
-        return Connect4.horizontalWin(board,player) 
-        #r Connect4.verticalWin(board,player) or Connect4.diagonalRWint(board,player) or Connect4.diagonalRWint(board,player)
+        #return Connect4.horizontalWin(board,player) or Connect4.verticalWin(board,player) or 
+        return Connect4.diagonalRWint(board,player) #or Connect4.diagonalRWint(board,player)
 
     def PlayerTurn(board, player):
         Connect4.print_board(board)
