@@ -20,36 +20,44 @@ class Connect4():
 
     def verticalWin(board,player):
         count = 0
-        # check horizontal wins
-        for i in range(0, Connect4.num_Cols - 2, 1):
-            for j in range(0, Connect4.num_Rows - 1, 1):
+        # check for horizontal wins
+        #print(board[2][2])
+        for i in range(0, Connect4.num_Rows - 1, 1):
+            for j in range(0, Connect4.num_Cols - 1, 1):
                     while board[i + count][j] == player:
                         count += 1
-                        #print(count)            
-                        if i + count >= Connect4.num_Rows - 1:
+                        print(count)
+                        #print("A")
+                        if count >= 4:
+                            #print("I worked")
+                            return True
+                        if i + count >= Connect4.num_Rows:
+                            count = 0
+                            #print(j + count)
+                            #print ("B")
                             break
-                    if count >= 4:
-                        return True
 
     def horizontalWin(board,player):
         count = 0
-        # check for vertical wins
-        print(board[2][2])
+        # check for horizontal wins
+        #print(board[2][2])
         for i in range(0, Connect4.num_Rows - 1, 1):
             for j in range(0, Connect4.num_Cols - 1, 1):
                     while board[i][j + count] == player:
                         count += 1
-                        #print(count)
-                        #print(i)
-                        print(j + count)
+                        print(count)
                         #print("A")
+                        if count >= 4:
+                            print("I worked")
+                            return True
                         if j + count >= Connect4.num_Cols:
                             count = 0
-                            print(count)
-                            print ("B")
+                            #print(j + count)
+                            #print ("B")
                             break
-                    if count >= 4:
-                        return True
+                        if i + count >= Connect4.num_Rows:
+                            count = 0
+                            break
 
     def diagonalRWint(board,player):
         count = 0
