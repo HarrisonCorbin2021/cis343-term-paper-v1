@@ -25,7 +25,7 @@ class Connect4():
             for j in range(0, Connect4.num_Rows - 1, 1):
                     while board[i + count][j] == player:
                         count += 1
-                        print(count)            
+                        #print(count)            
                         if i + count >= Connect4.num_Rows - 1:
                             break
                     if count >= 4:
@@ -33,25 +33,23 @@ class Connect4():
 
     def horizontalWin(board,player):
         count = 0
-        i = 0
-        j = 0
-        # check for Horizontal wins
-        while i < Connect4.num_Cols:
-            while j < Connect4.num_Rows:
+        # check for vertical wins
+        print(board[2][2])
+        for i in range(0, Connect4.num_Rows - 1, 1):
+            for j in range(0, Connect4.num_Cols - 1, 1):
                     while board[i][j + count] == player:
                         count += 1
                         #print(count)
                         #print(i)
-                        #print(j + count)
+                        print(j + count)
+                        #print("A")
                         if j + count >= Connect4.num_Cols:
                             count = 0
                             print(count)
-                            print ("I worked")
+                            print ("B")
                             break
-                        if count >= 4:
-                            return True
-                    j += 1
-            i += 1
+                    if count >= 4:
+                        return True
 
     def diagonalRWint(board,player):
         count = 0
@@ -79,7 +77,9 @@ class Connect4():
                         return True
                     
     def winCheck(board, player):
-        return Connect4.horizontalWin(board,player) #r Connect4.verticalWin(board,player) or Connect4.diagonalRWint(board,player) or Connect4.diagonalRWint(board,player)
+        #print ("F")
+        return Connect4.horizontalWin(board,player) 
+        #r Connect4.verticalWin(board,player) or Connect4.diagonalRWint(board,player) or Connect4.diagonalRWint(board,player)
 
     def PlayerTurn(board, player):
         Connect4.print_board(board)
@@ -87,7 +87,7 @@ class Connect4():
         inp = input()
         inp = ord(inp[0]) - ord("a")
         #Check for a valid input
-        print(inp)
+        #print(inp)
         while inp > 7 or inp < 0:
             if inp == 16:
                 print("Goodbye.")
