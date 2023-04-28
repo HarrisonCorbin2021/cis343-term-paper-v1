@@ -33,21 +33,25 @@ class Connect4():
 
     def horizontalWin(board,player):
         count = 0
+        i = 0
+        j = 0
         # check for Horizontal wins
-        for i in range (0, Connect4.num_Cols - 1, 1):
-            for j in range(0, Connect4.num_Rows + 1, 1):
+        while i < Connect4.num_Cols:
+            while j < Connect4.num_Rows:
                     while board[i][j + count] == player:
                         count += 1
                         #print(count)
                         #print(i)
-                        print(j + count)
+                        #print(j + count)
                         if j + count >= Connect4.num_Cols:
                             count = 0
                             print(count)
                             print ("I worked")
                             break
-                    if count >= 4:
-                        return True
+                        if count >= 4:
+                            return True
+                    j += 1
+            i += 1
 
     def diagonalRWint(board,player):
         count = 0
