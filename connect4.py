@@ -42,28 +42,32 @@ class Connect4():
         # check for horizontal wins
         #print(board[2][2])
         for i in range(0, Connect4.num_Rows - 1, 1):
-            for j in range(0, Connect4.num_Cols - 1, 1):
-                    while board[i][j + count] == player:
+            for j in board[i]:
+                    if j == player:
                         count += 1
                         print(count)
+                        print(i)
                         #print("A")
                         if count >= 4:
                             print("I worked")
                             return True
-                        if j + count >= Connect4.num_Cols:
-                            count = 0
+                        #if j + count >= Connect4.num_Cols:
+                            #count = 0
+                            #print("A")
                             #print(j + count)
                             #print ("B")
-                            break
-                        if i + count >= Connect4.num_Rows:
-                            count = 0
-                            break
+                            #break
+                        #if i + count >= Connect4.num_Rows:
+                            #print(i)
+                            #print(Connect4.num_Rows)
+                            #count = 0
+                            #break
 
     def diagonalRWint(board,player):
         count = 0
         # check for diagonal right wins
-        for i in range(Connect4.num_Cols - 1):
-            for j in range(Connect4.num_Rows - 1):
+        for i in range(0, Connect4.num_Rows - 1, 1):
+            for j in range(0, Connect4.num_Cols - 1, 1):
                     while board[i + count][j + count] == player:
                         count += 1
                         if i + count >= Connect4.num_Cols - 1 or j + count <= Connect4.num_Rows:
@@ -75,8 +79,8 @@ class Connect4():
     def diagonalLWin(board,player):     
         count = 0
         # check for diagonal left wins
-        for i in range(Connect4.num_Cols - 1):
-            for j in range(Connect4.num_Rows - 1):
+        for i in range(0, Connect4.num_Rows - 1, 1):
+            for j in range(0, Connect4.num_Cols - 1, 1):
                     while board[i - count][j + count] == player:
                         count += 1
                         if i - count >= 0 or j + count >= Connect4.num_Cols:
@@ -112,7 +116,10 @@ class Connect4():
         else:
             print("That column is full. Please choose another")
         if Connect4.winCheck(board, player):
-            print ("Congratulations, Player #{player}. You Win.")
+            if player == 1:
+                print ('Congratulations, Player 1. You Win.')
+            else:
+                print ('Congratulations, Player 2. You Win.')
             quit()
         if player == 1:
             Connect4.PlayerTurn(board, 2)
