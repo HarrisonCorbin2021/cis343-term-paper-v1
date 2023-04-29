@@ -74,10 +74,10 @@ class Connect4():
         # check for diagonal left wins
         for i in range(0, Connect4.num_Rows - 3, 1):
             for j in range(0, Connect4.num_Cols - 3, 1):
-                    while board[i - count][j + count] == player:
+                    while board[i + count][j - count] == player:
                         count += 1
                         print(count)
-                        if i - count < 0 or j + count >= Connect4.num_Cols:
+                        if i + count >= Connect4.num_Rows or j - count < 0:
                             break
                     if count >= 4:
                         return True
