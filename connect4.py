@@ -54,14 +54,13 @@ class Connect4():
                     else:
                         count = 0
 
-    def diagonalRWint(board,player):
+    def diagonalLWint(board,player):
         count = 0
         # check for diagonal right wins
-        for i in range(0, Connect4.num_Rows - 1, 1):
-            for j in range(0, Connect4.num_Cols - 1, 1):
+        for i in range(0, Connect4.num_Rows - 3, 1):
+            for j in range(0, Connect4.num_Cols - 3, 1):
                     while board[i + count][j + count] == player:
                         count += 1
-                        print(count)
                         if count >= 4:
                             return True
                         if i + count >= Connect4.num_Cols - 1:
@@ -70,14 +69,15 @@ class Connect4():
                             break
                     
 
-    def diagonalLWin(board,player):     
+    def diagonalRWin(board,player):     
         count = 0
         # check for diagonal left wins
-        for i in range(0, Connect4.num_Rows - 1, 1):
-            for j in range(0, Connect4.num_Cols - 1, 1):
+        for i in range(0, Connect4.num_Rows - 3, 1):
+            for j in range(0, Connect4.num_Cols - 3, 1):
                     while board[i - count][j + count] == player:
                         count += 1
-                        if i - count >= 0 or j + count >= Connect4.num_Cols:
+                        print(count)
+                        if i - count < 0 or j + count >= Connect4.num_Cols:
                             break
                     if count >= 4:
                         return True
@@ -85,7 +85,7 @@ class Connect4():
     def winCheck(board, player):
         #print ("F")
         #return Connect4.horizontalWin(board,player) or Connect4.verticalWin(board,player) or 
-        return Connect4.diagonalRWint(board,player) #or Connect4.diagonalRWint(board,player)
+        return Connect4.diagonalRWin(board,player) #or Connect4.diagonalLWin(board,player)
 
     def PlayerTurn(board, player):
         Connect4.print_board(board)
