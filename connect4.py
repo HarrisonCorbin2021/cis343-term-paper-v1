@@ -84,8 +84,7 @@ class Connect4():
                     
     def winCheck(board, player):
         #print ("F")
-        #return Connect4.horizontalWin(board,player) or Connect4.verticalWin(board,player) or 
-        return Connect4.diagonalRWin(board,player) #or Connect4.diagonalLWin(board,player)
+        return Connect4.horizontalWin(board,player) or Connect4.verticalWin(board,player) or Connect4.diagonalRWin(board,player) #or Connect4.diagonalLWin(board,player)
 
     def PlayerTurn(board, player):
         Connect4.print_board(board)
